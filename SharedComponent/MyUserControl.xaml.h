@@ -18,6 +18,7 @@ namespace winrt::SharedComponent::implementation
     {
         MyUserControl()
         {
+            RegisterTraceLogger();
             winrt::Windows::UI::Xaml::Media::CompositionTarget::Rendered([](auto sender, auto e) {
                 RecordOnRendered();
                 });
