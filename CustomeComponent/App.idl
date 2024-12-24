@@ -1,8 +1,0 @@
-namespace CustomeComponent
-{
-    [default_interface]
-     runtimeclass App : Windows.UI.Xaml.Application, Windows.UI.Xaml.Markup.IXamlMetadataProvider, Windows.Foundation.IClosable
-     {
-        App();
-     }
-}
