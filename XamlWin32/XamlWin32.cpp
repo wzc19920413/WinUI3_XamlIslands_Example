@@ -12,7 +12,7 @@ HINSTANCE hInst;                                // current instance
 WCHAR szTitle[MAX_LOADSTRING];                  // The title bar text
 WCHAR szWindowClass[MAX_LOADSTRING];            // the main window class name
 winrt::SharedComponent::App hostApp{ nullptr };
-winrt::Windows::UI::Xaml::Hosting::DesktopWindowXamlSource _desktopWindowXamlSource{ nullptr };
+winrt::Microsoft::UI::Xaml::Hosting::DesktopWindowXamlSource _desktopWindowXamlSource{ nullptr };
 winrt::SharedComponent::MyUserControl _myUserControl{ nullptr };
 
 // Forward declarations of functions included in this code module:
@@ -34,8 +34,9 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
     RecordApplicationStart();
     // TODO: Place code here.
     winrt::init_apartment(winrt::apartment_type::single_threaded);
+    auto dispatcherQueueController{ winrt::Microsoft::UI::Dispatching::DispatcherQueueController::CreateOnCurrentThread() };
     hostApp = winrt::SharedComponent::App{};
-    _desktopWindowXamlSource = winrt::Windows::UI::Xaml::Hosting::DesktopWindowXamlSource{};
+    _desktopWindowXamlSource = winrt::Microsoft::UI::Xaml::Hosting::DesktopWindowXamlSource{};
 
     // Initialize global strings
     LoadStringW(hInstance, IDS_APP_TITLE, szTitle, MAX_LOADSTRING);
@@ -118,10 +119,9 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
     // Begin XAML Islands walkthrough code.
     if (_desktopWindowXamlSource != nullptr)
     {
-        auto interop = _desktopWindowXamlSource.as<IDesktopWindowXamlSourceNative>();
-        check_hresult(interop->AttachToWindow(hWnd));
-        HWND hWndXamlIsland = nullptr;
-        interop->get_WindowHandle(&hWndXamlIsland);
+        auto windowId = winrt::Microsoft::UI::GetWindowIdFromWindow(hWnd);
+        _desktopWindowXamlSource.Initialize(windowId);
+        HWND hWndXamlIsland = winrt::Microsoft::UI::GetWindowFromWindowId(_desktopWindowXamlSource.SiteBridge().WindowId());
         RECT windowRect;
         ::GetWindowRect(hWnd, &windowRect);
         ::SetWindowPos(hWndXamlIsland, NULL, 0, 0, windowRect.right - windowRect.left, windowRect.bottom - windowRect.top, SWP_SHOWWINDOW);
@@ -182,7 +182,6 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
             _desktopWindowXamlSource.Close();
             _desktopWindowXamlSource = nullptr;
         }
-        hostApp.Close();
         break;
     case WM_SIZE:
         AdjustLayout(hWnd);
@@ -215,7 +214,7 @@ INT_PTR CALLBACK About(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam)
 
 void AdjustLayout(HWND hWnd)
 {
-    if (_desktopWindowXamlSource != nullptr)
+    /*if (_desktopWindowXamlSource != nullptr)
     {
         auto interop = _desktopWindowXamlSource.as<IDesktopWindowXamlSourceNative>();
         HWND xamlHostHwnd = NULL;
@@ -223,5 +222,5 @@ void AdjustLayout(HWND hWnd)
         RECT windowRect;
         ::GetWindowRect(hWnd, &windowRect);
         ::SetWindowPos(xamlHostHwnd, NULL, 0, 0, windowRect.right - windowRect.left, windowRect.bottom - windowRect.top, SWP_SHOWWINDOW);
-    }
+    }*/
 }

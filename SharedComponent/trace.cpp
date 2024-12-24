@@ -21,28 +21,28 @@ TRACELOGGING_DEFINE_PROVIDER(g_NotepadTraceProvider, "Microsoft.NotepadApp",
                       TraceLoggingKeyword(MICROSOFT_KEYWORD_MEASURES));
 
 void RecordApplicationStart() {
-    NotepadTraceInfoMeasures("XamlWin32.ApplicationStart");
+    NotepadTraceInfoMeasures("XamlWinUI3.ApplicationStart");
 }
 
 void RecordOnRendered() {
     NumberOfRender++;
     if (NumberOfRender == 2)
     {
-        NotepadTraceInfoMeasures("XamlWin32.OnRendered");
+        NotepadTraceInfoMeasures("XamlWinUI3.OnRendered");
     }
 }
 
 void RecordOnUserControlRendered() {
-    NotepadTraceInfoMeasures("XamlWin32.UserControlOnRendered");
+    NotepadTraceInfoMeasures("XamlWinUI3.UserControlOnRendered");
 }
 
 void RecordAnimationComplete() {
-    NotepadTraceInfoMeasures("XamlWin32.AnimationComplete");
-    NotepadTraceInfoMeasures("XamlWin32.ApplicationClose");
+    NotepadTraceInfoMeasures("XamlWinUI3.AnimationComplete");
+    NotepadTraceInfoMeasures("XamlWinUI3.ApplicationClose");
 }
 
 void RecordLowPriorityTask() {
-    NotepadTraceInfoMeasures("XamlWin32.LowPriorityTask");
+    NotepadTraceInfoMeasures("XamlWinUI3.LowPriorityTask");
 }
 
 void RegisterTraceLogger() {

@@ -1,7 +1,7 @@
 namespace SharedComponent
 {
     [default_interface]
-    runtimeclass MyUserControl : Windows.UI.Xaml.Controls.UserControl
+    runtimeclass MyUserControl : Microsoft.UI.Xaml.Controls.UserControl
     {
         MyUserControl();
     }

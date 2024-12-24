@@ -10,9 +10,8 @@ using namespace Windows::UI::Xaml;
 namespace winrt::SharedComponent::implementation
 {
 
-    void MyUserControl::ClickHandler(IInspectable const&, RoutedEventArgs const&)
+    void MyUserControl::ClickHandler(IInspectable const& sender, Microsoft::UI::Xaml::RoutedEventArgs const& args)
     {
-        RecordOnRendered();
 		myButton().Content(box_value(L"Clicked"));
     }
 }

@@ -11,11 +11,12 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp" />
-    <ClCompile Include="Class.cpp" />
     <ClCompile Include="$(GeneratedFilesDir)module.g.cpp" />
+    <ClCompile Include="trace.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h" />
+    <ClInclude Include="trace.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="SharedComponent.def" />
@@ -29,5 +30,6 @@
   </ItemGroup>
   <ItemGroup>
     <Page Include="App.xaml" />
+    <Page Include="MyUserControl.xaml" />
   </ItemGroup>
 </Project>

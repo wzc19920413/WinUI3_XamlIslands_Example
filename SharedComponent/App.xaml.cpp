@@ -3,13 +3,13 @@
 #include "App.g.cpp"
 
 using namespace winrt;
-using namespace Windows::UI::Xaml;
+using namespace Microsoft::UI::Xaml;
 
 namespace winrt::SharedComponent::implementation
 {
     App::App()
     {
-        m_windowsXamlManager = winrt::Windows::UI::Xaml::Hosting::WindowsXamlManager::InitializeForCurrentThread();
+        m_windowsXamlManager = winrt::Microsoft::UI::Xaml::Hosting::WindowsXamlManager::InitializeForCurrentThread();
 
         InitializeComponent();
     }
@@ -28,17 +28,17 @@ namespace winrt::SharedComponent::implementation
         }
     }
 
-    winrt::Windows::UI::Xaml::Markup::IXamlType App::GetXamlType(winrt::Windows::UI::Xaml::Interop::TypeName const& type)
+    winrt::Microsoft::UI::Xaml::Markup::IXamlType App::GetXamlType(winrt::Windows::UI::Xaml::Interop::TypeName const& type)
     {
         return m_xamlMetaDataProvider.GetXamlType(type);
     }
 
-    winrt::Windows::UI::Xaml::Markup::IXamlType App::GetXamlType(winrt::hstring const& fullName)
+    winrt::Microsoft::UI::Xaml::Markup::IXamlType App::GetXamlType(winrt::hstring const& fullName)
     {
         return m_xamlMetaDataProvider.GetXamlType(fullName);
     }
 
-    winrt::com_array<winrt::Windows::UI::Xaml::Markup::XmlnsDefinition> App::GetXmlnsDefinitions()
+    winrt::com_array<winrt::Microsoft::UI::Xaml::Markup::XmlnsDefinition> App::GetXmlnsDefinitions()
     {
         return m_xamlMetaDataProvider.GetXmlnsDefinitions();
     }
