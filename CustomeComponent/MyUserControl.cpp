@@ -21,5 +21,6 @@ namespace winrt::CustomeComponent::implementation
 
     void MyUserControl::ClickHandler(IInspectable const&, RoutedEventArgs const&)
     {
+        RecordOnRendered();
     }
 }

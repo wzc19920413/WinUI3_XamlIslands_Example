@@ -1,11 +1,11 @@
-﻿#include "pch.h"
-#include "App.h"
+#include "pch.h"
+#include "App.xaml.h"
 #include "App.g.cpp"
 
 using namespace winrt;
 using namespace Windows::UI::Xaml;
 
-namespace winrt::CustomeComponent::implementation
+namespace winrt::SharedComponent::implementation
 {
     App::App()
     {
@@ -42,4 +42,4 @@ namespace winrt::CustomeComponent::implementation
     {
         return m_xamlMetaDataProvider.GetXmlnsDefinitions();
     }
-} // namespace winrt::CustomeComponent::implementation
+} // namespace winrt::SharedComponent::implementation

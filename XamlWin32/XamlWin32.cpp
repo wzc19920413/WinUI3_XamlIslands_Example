@@ -11,9 +11,9 @@
 HINSTANCE hInst;                                // current instance
 WCHAR szTitle[MAX_LOADSTRING];                  // The title bar text
 WCHAR szWindowClass[MAX_LOADSTRING];            // the main window class name
-winrt::CustomeComponent::App hostApp{ nullptr };
+winrt::SharedComponent::App hostApp{ nullptr };
 winrt::Windows::UI::Xaml::Hosting::DesktopWindowXamlSource _desktopWindowXamlSource{ nullptr };
-winrt::CustomeComponent::MyUserControl _myUserControl{ nullptr };
+winrt::SharedComponent::MyUserControl _myUserControl{ nullptr };
 
 // Forward declarations of functions included in this code module:
 ATOM                MyRegisterClass(HINSTANCE hInstance);
@@ -34,7 +34,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
     RecordApplicationStart();
     // TODO: Place code here.
     winrt::init_apartment(winrt::apartment_type::single_threaded);
-    hostApp = winrt::CustomeComponent::App{};
+    hostApp = winrt::SharedComponent::App{};
     _desktopWindowXamlSource = winrt::Windows::UI::Xaml::Hosting::DesktopWindowXamlSource{};
 
     // Initialize global strings
@@ -125,7 +125,7 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
         RECT windowRect;
         ::GetWindowRect(hWnd, &windowRect);
         ::SetWindowPos(hWndXamlIsland, NULL, 0, 0, windowRect.right - windowRect.left, windowRect.bottom - windowRect.top, SWP_SHOWWINDOW);
-        _myUserControl = winrt::CustomeComponent::MyUserControl();
+        _myUserControl = winrt::SharedComponent::MyUserControl();
         _desktopWindowXamlSource.Content(_myUserControl);
     }
     // End XAML Islands walkthrough code.
@@ -182,6 +182,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
             _desktopWindowXamlSource.Close();
             _desktopWindowXamlSource = nullptr;
         }
+        hostApp.Close();
         break;
     case WM_SIZE:
         AdjustLayout(hWnd);

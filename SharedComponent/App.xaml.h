@@ -1,9 +1,9 @@
-﻿#pragma once
+#pragma once
 
 #define DISABLE_XAML_GENERATED_MAIN
 #include "App.g.h"
 
-namespace winrt::CustomeComponent::implementation
+namespace winrt::SharedComponent::implementation
 {
     struct App : AppT<App>
     {
@@ -19,13 +19,13 @@ namespace winrt::CustomeComponent::implementation
 
     private:
         winrt::Windows::UI::Xaml::Hosting::WindowsXamlManager m_windowsXamlManager{ nullptr };
-        winrt::CustomeComponent::XamlMetaDataProvider m_xamlMetaDataProvider;
+        winrt::SharedComponent::XamlMetaDataProvider m_xamlMetaDataProvider;
     };
-} // namespace winrt::CustomeComponent::implementation
+} // namespace winrt::SharedComponent::implementation
 
-namespace winrt::CustomeComponent::factory_implementation
+namespace winrt::SharedComponent::factory_implementation
 {
     struct App : AppT<App, implementation::App>
     {
     };
-} // namespace winrt::CustomeComponent::factory_implementation
+} // namespace winrt::SharedComponent::factory_implementation

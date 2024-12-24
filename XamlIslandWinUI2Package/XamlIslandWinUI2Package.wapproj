@@ -116,7 +116,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\XamlWin32\XamlWin32.vcxproj" />
-    <ProjectReference Include="..\CustomeComponent\CustomeComponent.vcxproj">
+    <ProjectReference Include="..\SharedComponent\SharedComponent.vcxproj">
       <Private>True</Private>
     </ProjectReference>
   </ItemGroup>
