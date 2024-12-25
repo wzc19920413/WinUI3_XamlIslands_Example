@@ -9,7 +9,7 @@
   <Identity
     Name="a0230f3c-7889-4a4b-b86c-abd81672a519"
     Publisher="CN=zhicwang"
-    Version="1.0.4.0" />
+    Version="1.0.5.0" />
 
   <Properties>
     <DisplayName>XamlWinUI3</DisplayName>
