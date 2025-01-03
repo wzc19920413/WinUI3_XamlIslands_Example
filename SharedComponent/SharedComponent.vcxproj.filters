@@ -31,5 +31,8 @@
   <ItemGroup>
     <Page Include="App.xaml" />
     <Page Include="MyUserControl.xaml" />
+    <Page Include="CowriterCreditLimitDialog.xaml" />
+    <Page Include="UIUserControl.xaml" />
+    <Page Include="MainPage.xaml" />
   </ItemGroup>
 </Project>

@@ -6,6 +6,7 @@
 
 namespace {
     int NumberOfRender = 0;
+    bool registered = false;
 }
 
 constexpr int64_t MICROSOFT_KEYWORD_MEASURES = 0x0000400000000000;      // Bit 46
@@ -46,5 +47,8 @@ void RecordLowPriorityTask() {
 }
 
 void RegisterTraceLogger() {
-    TraceLoggingRegister(g_NotepadTraceProvider);
+    if (!registered) {
+        registered = true;
+        TraceLoggingRegister(g_NotepadTraceProvider);
+    }
 }
